@@ -1,2 +1,8 @@
 .stack-work/
-*.cabal
+dist/
+dist-*/
+dist-newstyle/
+*.hi
+*.o
+*.dyn_hi
+*.dyn_o

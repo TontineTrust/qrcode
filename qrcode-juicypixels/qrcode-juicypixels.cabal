@@ -1,0 +1,41 @@
+cabal-version: 3.0
+
+
+name:           qrcode-juicypixels
+version:        0.8.6
+synopsis:       Converts a qrcode-core image to JuicyPixels
+description:    Please see the README on GitHub at <https://github.com/alexkazik/qrcode/qrcode-juicypixels#readme>
+category:       graphics
+homepage:       https://github.com/alexkazik/qrcode#readme
+bug-reports:    https://github.com/alexkazik/qrcode/issues
+author:         ALeX Kazik
+maintainer:     alex@kazik.de
+copyright:      2018 ALeX Kazik
+license:        MIT
+license-file:   LICENSE
+build-type:     Simple
+
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/alexkazik/qrcode
+
+library
+  exposed-modules:
+      Codec.QRCode.JuicyPixels
+  other-modules:
+      Paths_qrcode_juicypixels
+  hs-source-dirs:
+      src
+  build-depends:
+      JuicyPixels
+    , base
+    , base64-bytestring
+    , bytestring
+    , qrcode-core
+    , text
+    , vector
+  default-language: GHC2021

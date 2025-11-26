@@ -1,0 +1,5 @@
+packages:
+  qrcode-core/
+  qrcode-juicypixels/
+
+import: https://www.stackage.org/lts-24.20/cabal.config

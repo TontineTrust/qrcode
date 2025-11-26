@@ -63,4 +63,6 @@ generateQRImage (v, e, bs, mmask) = runST $ do
         -- return the image along with the penalty score
         return (getPenaltyScore qrimg, qrimg)
       -- pick the image with the lowest penalty score
-      return $ snd $ head $ sortOn fst rs
+      case sortOn fst rs of
+        [] -> error "generateQRImage: expected at least one mask result"
+        (_, bestImg) : _ -> return bestImg

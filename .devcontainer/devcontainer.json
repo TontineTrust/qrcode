@@ -1,0 +1,43 @@
+{
+    "name": "qrcode Dev",
+    "build": {
+        "dockerfile": "../Dockerfile",
+        "context": "..",
+        "target": "devcontainer"
+    },
+    "workspaceFolder": "/workspaces/qrcode",
+    "remoteUser": "root",
+
+    "features": {
+        "ghcr.io/devcontainers/features/git:1": {}
+    },
+
+    "runArgs": ["--network=host"],
+
+    "mounts": [
+        "source=cabal-store,target=/root/.cabal,type=volume",
+        "source=ghcup-store,target=/root/.ghcup,type=volume",
+        "source=${localEnv:HOME}/.gitconfig,target=/root/.gitconfig,type=bind",
+        "source=${localEnv:HOME}/.ssh,target=/root/.ssh,type=bind,readonly",
+        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
+    ],
+    "postCreateCommand": "cabal update && cabal build all --only-dependencies -j && npm install",
+    "forwardPorts": [8080],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "haskell.haskell",
+                "justusadam.language-haskell",
+                "ms-azuretools.vscode-docker",
+                "github.vscode-github-actions",
+                "eamodio.gitlens",
+                "EditorConfig.EditorConfig"
+            ],
+            "settings": {
+                "haskell.manageHLS": "GHCup",
+                "haskell.formattingProvider": "ormolu",
+                "editor.formatOnSave": true
+            }
+        }
+    }
+}
